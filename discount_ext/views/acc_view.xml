@@ -1,0 +1,22 @@
+<!-- <?xml version="1.0" encoding="utf-8"?> -->
+<odoo>
+ <record id="invoice_form_discount_ext_inherit_my" model="ir.ui.view">
+            <field name="name">invoice.form.discount.ect.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="my_discount_type" />
+                    <field name="mydiscount_id" options='{"no_create": 1, "no_create_edit": 1}' attrs="{'invisible': [('my_discount_type', '!=', 'categ_amnt')]}"/>
+                    <!-- <field name="my_disc_acc_id" options='{"no_create": 1, "no_create_edit": 1}' attrs="{'invisible': [('my_discount_type', '=', 'none_amnt')], -->
+                    <!-- 'required': [('my_discount_type', '!=', 'none_amnt')]}"/> -->
+                    <field name="my_discount_percentage" options='{"no_create": 1, "no_create_edit": 1}' attrs="{'invisible': [('my_discount_type', '!=', 'percentage_amnt')]}"/> 
+                    <field name="my_fxd_discount_amnt" options='{"no_create": 1, "no_create_edit": 1}' attrs="{'invisible': [('my_discount_type', '!=', 'fixed_amnt')]}"/>  
+                    
+                </xpath>
+                 <xpath expr="//field[@name='amount_tax']" position="after">
+                    <field name="my_discount_amnt" />
+                </xpath>
+            </field>
+        </record>
+</odoo>

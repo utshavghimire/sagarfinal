@@ -1,0 +1,66 @@
+<!-- <?xml version="1.0" encoding="utf-8"?> -->
+<odoo>
+ <record id="view_discount_ext_tree" model="ir.ui.view">
+            <field name="name">discount.setup.tree</field>
+            <field name="model">discount.setup</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Discount Categories">
+                    <field name="name" />
+                    <field name="code" />
+              
+                </tree>
+            </field>
+        </record>
+<record id="discount_form_view_ext" model="ir.ui.view">
+            <field name="name">discount.setup.form</field>
+            <field name="model">discount.setup</field>
+             <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Discount Category Setup">
+            <sheet>
+            <p class="oe_grey">
+                      Please keep name like [code] Name of category
+                      </p>
+           <group col="4" colspan="4"
+                                    name="Discount Detail">
+                         <field name="name" />
+                    <field name="code" />
+            </group>
+                        <notebook colspan="4">
+                            <page name="Discount_Category_Config"
+                                string="Discount Category Config">
+                                
+                          <field name="discount_per_ids">
+                            <tree string="Discount List" editable="bottom" >
+                                <!-- <field name="name" /> -->
+                                <field name="category_id" />
+                                <field name="discount_per" />
+                            </tree>
+                        </field>
+                                    
+                          
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+        </field>
+        </record>
+
+         <record model="ir.actions.act_window" id="action_view_discount_per">
+            <field name="name">Discount Category</field>
+            <field name="res_model">discount.setup</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create new discount category
+                </p>
+            </field>
+        </record>
+        <!-- <menuitem id="menu_discount_ext" name="Discount"/> -->
+        <menuitem id="menu_discount_ext" name="Discount Setup" parent="account.menu_finance_reports"
+                  action="action_view_discount_per"/>
+
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="action_report_discount_ext"
+            model="report.discount_ext.report_discount"
+            string="Salesperson report"
+            report_type="qweb-html"
+            name="discount_ext.report_discount"
+            file="discount_ext.report_discount"
+            />
+    </data>
+</odoo>
